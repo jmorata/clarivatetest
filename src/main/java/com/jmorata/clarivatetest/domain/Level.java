@@ -1,7 +1,9 @@
 package com.jmorata.clarivatetest.domain;
 
-@lombok.Data
-public class Level implements Comparable<Level>{
+import lombok.Data;
+
+@Data(staticConstructor = "of")
+public class Level implements Comparable<Level> {
 
     private final Integer value;
 

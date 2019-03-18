@@ -3,17 +3,18 @@ package com.jmorata.clarivatetest.mother;
 import com.jmorata.clarivatetest.domain.*;
 
 public class UserMother {
+    /*
     public static UserMap createUserMapDummy() {
 
         UserId userId = new UserId(1L);
         User user = getUser("user1", "pass1", 1, 1500);
 
         UserMap userMap = new UserMap();
-        userMap.addUser(userId, user);
+        userMap.addUserMap(userId, user);
 
         userId = new UserId(2L);
         user = getUser("user2", "pass2", 1, 800);
-        userMap.addUser(userId, user);
+        userMap.addUserMap(userId, user);
 
         // add levels, scorings at user
 
@@ -29,4 +30,5 @@ public class UserMother {
         user.putLevel(level, scoreSet);
         return user;
     }
+    */
 }

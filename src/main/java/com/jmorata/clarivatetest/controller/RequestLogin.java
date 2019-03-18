@@ -1,9 +1,8 @@
 package com.jmorata.clarivatetest.controller;
 
-import lombok.Builder;
+import lombok.Data;
 
-@Builder
-@lombok.Data
+@Data
 class RequestLogin {
 
     private String username;

@@ -1,12 +1,14 @@
 package com.jmorata.clarivatetest.domain;
 
-@lombok.Data
-public class UserId implements Comparable<UserId>{
+import lombok.Data;
 
-    private final Long id;
+@Data(staticConstructor = "of")
+public class UserId implements Comparable<UserId> {
+
+    private final String username;
 
     @Override
     public int compareTo(UserId o) {
-        return this.id.compareTo(o.id);
+        return this.username.compareTo(o.username);
     }
 }

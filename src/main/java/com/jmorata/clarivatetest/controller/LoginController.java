@@ -1,8 +1,10 @@
 package com.jmorata.clarivatetest.controller;
 
+import com.jmorata.clarivatetest.service.LoginService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.TextCodec;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,9 +26,15 @@ public class LoginController {
     @Value("${jwt.secret}")
     private String secret;
 
+    @Value("${clarivatetest.ttl}")
+    private Integer ttl;
+
+    @Autowired
+    LoginService loginService;
+
     @PostMapping(produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> login(@RequestBody final RequestLogin requestLogin) throws ServletException {
-        final boolean existUser = true;
+        final boolean existUser = loginService.checkUser(requestLogin.getUsername(), requestLogin.getPassword());
 
         if (!existUser) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -37,7 +45,7 @@ public class LoginController {
         final String jwt = Jwts.builder()
                 .setSubject(requestLogin.getUsername())
                 .setIssuedAt(Date.from(now))
-                .setExpiration(Date.from(now.plus(1, ChronoUnit.MINUTES)))
+                .setExpiration(Date.from(now.plus(ttl, ChronoUnit.MINUTES)))
                 .signWith(SignatureAlgorithm.HS256, TextCodec.BASE64.encode(secret))
                 .compact();
 
