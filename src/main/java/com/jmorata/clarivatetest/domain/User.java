@@ -12,7 +12,7 @@ public class User {
 
     public void addScoreLevel(Level level, Score score) {
         ScoreSet scoreSet = this.levels.get(level);
-        if (scoreSet==null) {
+        if (null==scoreSet) {
             scoreSet=new ScoreSet();
             levels.put(level, scoreSet);
         }
