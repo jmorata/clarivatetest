@@ -1,5 +1,3 @@
-## Clarivate Test v1.0
-
 ## Development Test
  * We would like to receive an implementation of a REST Api with the following methods:
 
