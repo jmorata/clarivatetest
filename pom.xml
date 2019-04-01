@@ -11,14 +11,14 @@
 	</parent>
 
 	<groupId>com.jmorata</groupId>
-	<artifactId>clarivatetest</artifactId>
+	<artifactId>test2</artifactId>
 	<version>1.0</version>
-	<name>clarivatetest</name>
-	<url>https://github.com/jmorata/clarivatetest</url>
-	<description>clarivatetest</description>
+	<name>test2</name>
+	<url>https://github.com/jmorata/test2</url>
+	<description>test2</description>
 
 	<properties>
-		<main.class>com.jmorata.clarivatetest.ClarivatetestApplication</main.class>
+		<main.class>com.jmorata.test2.Application</main.class>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
