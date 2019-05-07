@@ -27,14 +27,13 @@ public class LevelController {
     UserService userService;
 
     @PutMapping("/{level}/score/{score}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void setScore(@RequestAttribute("claims") final Claims claims, @PathVariable final Integer level, @PathVariable final Integer score) throws UserException {
         String username = claims.getSubject();
         userService.addUserLevelScore(username, level, score);
     }
 
     @GetMapping("/{level}/score")
-    public ResponseEntity<UserLevelPresenterSet> getScore(@PathVariable final Integer level, @RequestParam(required = false) final String filter) throws ServletException {
+    public ResponseEntity<UserLevelPresenterSet> getScore(@PathVariable final Integer level, @RequestParam(required = false) final String filter) {
         TreeMap<UserId, User> userIdUserTreeMap = userService.getUsersByLevel(level);
         Map<UserId, ScoreSet> userIdScoreSetMap = getUserIdScoreSetMap(level, userIdUserTreeMap);
         UserLevelPresenterSet users = UserLevelPresenterAdapter.adapt(userIdScoreSetMap, filter);
